@@ -1,0 +1,57 @@
+These scripts require that Ruby, Python, and OpenFST are
+installed.
+
+The following is a list of valid calls:
+
+To analyze Alice in Wonderland:
+ruby mainscript.rb alice_tokenized.txt alice_merged.txt 1
+ruby mainscript.rb alice_tokenized.txt alice_merged.txt 2
+
+To analyze Persuasion by Jane Austen:
+ruby mainscript.rb austen_tokenized.txt austen_merged.txt 1
+ruby mainscript.rb austen_tokenized.txt austen_merged.txt 2
+
+To analyze Heart of Darkness by Joseph Conrad:
+ruby mainscript.rb conrad_tokenized.txt conrad_merged.txt 1
+ruby mainscript.rb conrad_tokenized.txt conrad_merged.txt 2
+
+To analyze The Adventures of Huckleberry Finn by Mark Twain:
+ruby mainscript.rb twain_tokenized.txt twain_merged.txt 1
+ruby mainscript.rb twain_tokenized.txt twain_merged.txt 2
+
+For all the above calls, the argument "1" will analyze the text 
+for all the most common words in the Brown corpus.
+
+For all the above calls, the argument "2" will analyze the text
+for all the most common words in the Brown corpus with length 
+greater than 1.  Essentially, this excludes only the words "a"
+and "i" and tends to produce better results.
+
+When any of the above calls are called, the script will produce
+the precision and f-scores for dictionaries of size 25, 50, 75,
+100, 125, 150, 175, 200, 225, 250, 275, 300, 325, 350, and 375.
+
+Each run of the script generates extra files (example file names
+are 11611950_a.txt, 1161925_geq_b.fst, etc).  If you plan to run
+the script multiple times, it is best to delete these files
+between runs to ensure that everything still runs correctly.
+
+*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*
+
+Also included is a script for the transducer that includes data
+about unigram probabilities.  This transducer only uses option 2.
+To run this script, use the following calls:
+
+ruby mainscript_unigrams.rb alice_tokenized.txt alice_merged.txt
+ruby mainscript_unigrams.rb austen_tokenized.txt austen_merged.txt
+ruby mainscript_unigrams.rb conrad_tokenized.txt conrad_merged.txt
+ruby mainscript_unigrams.rb twain_tokenized.txt twain_merged.txt
+
+Again, the unigram scripts generate extra files.  If you plan to run
+the script multiple times, it is best to delete the extra files 
+between runs to ensure that everything still runs correctly.
+
+*	*	*	*	*	*	*	*	*	*	*	*	*	*	*	*
+
+The scripts test-string2.py and eval.py are courtesy of Elif 
+Yamangil.
